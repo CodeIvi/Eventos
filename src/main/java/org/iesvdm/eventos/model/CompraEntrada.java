@@ -12,13 +12,13 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Compra_entrada {
+public class CompraEntrada {
 private Integer id;
 private Integer eventoId;
 private String nombreComprador;
 private String emailComprador;
 private String zona;
-private String numeroEntradas;
+private int numeroEntradas;
 private BigDecimal precioUnitario;
 private BigDecimal precioTotal;
 private Date fechaCompra;

@@ -1,6 +1,6 @@
-package org.iesvdm.eventos.Service;
+package org.iesvdm.eventos.service;
 
-import org.iesvdm.eventos.Repository.EventoRepository;
+import org.iesvdm.eventos.repository.EventoRepository;
 import org.iesvdm.eventos.model.Evento;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,9 @@ public class EventoService {
 
     public List<Evento> getAll(){
         return eventoRepository.getAll();
+    }
 
+    public Evento findEventoById(long id){
+        return eventoRepository.findEventoById(id);
     }
 }

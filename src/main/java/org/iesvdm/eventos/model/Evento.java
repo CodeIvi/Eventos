@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 @Data
 @AllArgsConstructor
@@ -15,7 +17,7 @@ public class Evento {
     private long id;
     private String nombre;
     private String descripcion;
-    private Date fecha_hora;
+    private LocalDateTime fecha_hora;
     private String lugar;
     private BigDecimal precio_base;
     private BigDecimal recargo_grada;

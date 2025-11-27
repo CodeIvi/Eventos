@@ -6,7 +6,33 @@
 </head>
 <body>
 
-    <h1> LISTA DE EVENTOS <H1>
+    <h1>LISTA DE EVENTOS</h1>
 
+    <form method="post" th:action="@{/eventos/comprar/paso2}">
+            <fieldset>
+                <legend>Selecciona un evento</legend>
+                <div th:each="evento : ${listaEventos}">
+                    <input type="radio" th:id="${evento.id}" th:value="${evento.id}" name="eventoId" th:checked="${evento.id eq eventoAnterior.id}" required>
+                    <label th:for="${evento.id}" th:text="${evento.nombre}"></label>
+                </div>
+            </fieldset>
+            <div>
+                <label for="cantidadEntradas">Cantidad de entradas:</label>
+                <input type="number" id="cantidadEntradas" name="cantidadEntradas" th:value="${numeroEntradas ?: ''}" min="1" required>
+<!--                <input type="number" id="cantidadEntradas" name="cantidadEntradas"  min="1" required>-->
+            </div>
+
+
+        <div>
+            <input id="generalId" type="radio" name="zona" value="GENERAL"/><label for="generalId"> General</label>
+            <input id="gradaId" type="radio" name="zona" value="GRADA"/><label for="gradaId"> Grada</label>
+            <input id="vipId" type="radio" name="zona" value="VIP"/><label for="vipId"> Vip</label>
+        </div>
+
+        <a href="/eventos/comprar/paso1">
+            <button type="button">Anterior</button>
+        </a>
+        <button type>Continuar</button>
+    </form>
 </body>
 </html>
