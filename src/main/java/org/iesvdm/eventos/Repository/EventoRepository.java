@@ -1,11 +1,12 @@
 package org.iesvdm.eventos.Repository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.iesvdm.eventos.model.Evento;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Slf4j
 @Repository
 public class EventoRepository {
     private JdbcTemplate jdbcTemplate;
@@ -16,21 +17,24 @@ public class EventoRepository {
 
 
     public List<Evento> getAll() {
-        List<Evento> clientes = jdbcTemplate.query("""
+        List<Evento> eventos = jdbcTemplate.query("""
                 
-                        Select * from 
+                        Select * from evento
    
                     """,
-                (rs, rowNum)-> new Client(
+                (rs, rowNum)-> new Evento(
                         rs.getLong("id"),
                         rs.getString("nombre"),
                         rs.getString("direccion"),
-                        rs.getString("telefono"),
-                        rs.getString("fecha_nacimiento"))
+                        rs.getDate("fecha_hora"),
+                        rs.getString("lugar"),
+                        rs.getBigDecimal("precio_base"),
+                        rs.getBigDecimal("recargo_grada"),
+                        rs.getBigDecimal("recargo_vip"))
         );
 
-        log.info("Devuel tos {} clientes",clientes.size());
-        log.debug("Devuel tos {} clientes",clientes.size());
-        return clientes;
+        log.info("Devuel tos {} clientes",eventos.size());
+        log.debug("Devuel tos {} clientes",eventos.size());
+        return eventos;
     }
 }

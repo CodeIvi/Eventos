@@ -2,6 +2,7 @@ package org.iesvdm.eventos.Controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.iesvdm.eventos.Service.EventoService;
+import org.iesvdm.eventos.model.Evento;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,5 +21,8 @@ public class EventoController {
     }
 
     @GetMapping("/evento/comprar/paso1")
-    public String paso1Get(@ModelAttribute  )
+    public String paso1Get(@ModelAttribute("evento") Evento evento){
+
+
+    }
 }
